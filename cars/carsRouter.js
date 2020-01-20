@@ -29,11 +29,14 @@ router.get('/:id', (req, res) => {
 // insert
 router.post('/', (req, res) => {
   const newCarRecord = req.body;
+  console.log(req.body);
   carsDb.insert(newCarRecord)
     .then( resou => {
+      console.log(resou);
       res.status(200).json({ message: `status 200: successfully added record`, resource: resou })
     })
     .catch( err => {
+      console.log(err);
       res.status(500).json({ message: `status 500: internal server error, could not add record` })
     })
 })
@@ -42,6 +45,7 @@ router.put('/:id', (req, res) => {
   // validate id && validate newRecord :: 2:45PM 1.19
   const id = req.params.id;
   const newCarRecord = req.body;
+  console.log(id, newCarRecord);
   carsDb.update(id, newCarRecord)
     .then( resou => {
       res.status(200).json({ message: `status 200: successfully updated record`, resource: resou })
