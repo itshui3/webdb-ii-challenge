@@ -15,6 +15,7 @@ router.get('/', (req, res) => {
 })
 
 router.get('/:id', (req, res) => {
+  const id = req.params.id;
   carsDb.selectById(id)
     .then( resou => {
       res.status(200).json({ message: `status 200: successfully retrieved car record`, resource: resou})

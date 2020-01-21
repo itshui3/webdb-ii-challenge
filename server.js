@@ -1,4 +1,16 @@
-const server = require('express')();
+//build
+const express = require('express')
+const server = express();
+//dependencies
+server.use(express.json());
+
+const cors = require('cors');
+server.use(cors());
+
+const helmet = require('helmet');
+server.use(helmet());
+
+//api
 const apiRouter = require('./api/api-router.js');
 
 server.get('/', (req, res) => {
