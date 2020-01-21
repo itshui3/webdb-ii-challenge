@@ -23,12 +23,13 @@ function selectById(carId) {
 
 function insert(car) {
   console.log(car);
-  return db('cars').insert(car);
-    // .then( ids => {
-    //   return db('cars')
-    //     .where({ VIN: ids })
+  db('cars').insert(car)
+    .then( ids => {
+      console.log(ids);
+      return db('cars')
+        .where({ id: ids })
 // will return a car object, not id :: 2:45PM 1.19
-    // })
+    })
 }
 
 function update(carId, changes) {
